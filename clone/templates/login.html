@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -30,7 +30,7 @@
             <div class="field">
               <p class="control has-icons-left">
               <label class="label is-medium">Username</label>
-                <!-- {{ form.username }} -->
+                {{ form.username }}
                 <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
@@ -40,20 +40,20 @@
               <div class="field">
               <p class="control has-icons-left">
               <label class="label is-medium">Password</label>
-                <!-- {{ form.password }} -->
+                {{ form.password }}
                 <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
         </p>
           </div>
 
-      <!-- {% if form.errors %} -->
+      {% if form.errors %}
       <div class="row">
         <div class="col s12">
           <span style="color: red; font-weight: bold;">Your username or password did not match.</span>
         </div>
       </div>
-      <!-- {% endif %} -->
+      {% endif %}
 
       <div class="field">
       <p class="control">
@@ -67,7 +67,7 @@
 
 
 
-    <a href="" class="button is-info">Create an account</a>
+    <a href="{% url 'signup' %}" class="button is-info">Create an account</a>
 
 
   </form>
