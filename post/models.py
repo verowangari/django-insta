@@ -6,10 +6,9 @@ from django.urls import reverse
 import uuid
 
 # Create your models here.
-def user_directory_path(instance,filename):
-    
-    # The file will be uploaded to MEDIA_ROOT /user(id)/filename
-    return 'user_{0}/{1}'.format(instance.user.id,filename)
+def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
 
 class Tag (models.Model):
     title=models.CharField(max_length=75,verbose_name='Tag')
@@ -23,7 +22,7 @@ class Tag (models.Model):
         return reverse('tags',arg=[self.slug])
     
     def __str__(self):
-        self.title
+        return self.title
         
         
     def save(self,*args,**kwargs):
@@ -37,16 +36,18 @@ class Tag (models.Model):
 class Post(models.Model):
     id=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
     picture=models.ImageField(upload_to=user_directory_path,verbose_name='Picture',null=False)
+    caption = models.TextField(max_length=1500, verbose_name='Caption',default='SOME STRING')
     posted=models.DateTimeField(auto_now_add=True)
     tags=models.ManyToManyField(Tag,related_name='tags')
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+    likes = models.IntegerField(default=0)
     
     def get_absolute_url(self):
         return reverse('postdetails',args=[str(self.id)])
     
     
-    def __str__(self):
-        return self.posted
+    # def __str__(self):
+    #     return self.posted
     
     
 class Follow(models.Model):
