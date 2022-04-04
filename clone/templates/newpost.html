@@ -18,7 +18,7 @@
               <p class="control has-icons-left">
                 <input type="file" name="myfile">
               <label class="label is-medium">Choose your files</label>
-                {{ picture.url }}
+                {{ form.picture }}
                 <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
@@ -52,10 +52,7 @@
         </button>
       </p>
     </div>
-    {% if form.url %}
-    <p>File uploaded at: <a href="{{form.url }}">{{ form.url }}</a></p>
-    <p><a href="{% url 'index' %}">Return to home</a></p>
-  {% endif %}
+    
 
       </div>
 </div>
