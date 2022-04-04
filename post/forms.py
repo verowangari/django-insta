@@ -15,7 +15,7 @@ class NewPostForm(forms.ModelForm):
  
     class Meta:
         model = Post
-        fields = ( 'caption', 'tags')
+        fields = ( 'caption', 'tags','picture')
     
 		
 		

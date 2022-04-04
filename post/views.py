@@ -1,5 +1,5 @@
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.template import loader
 
@@ -37,16 +37,28 @@ def index(request):
 
     return HttpResponse(template.render(context,request))
 
-@login_required
+# @login_required
+# def NewPost(request):
+#     if request.method == 'POST':
+#         data=request.POST
+#         images=request.FILES.getlist('pictures')
+#         form = NewPostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             instance = Post(file_field=request.FILES['file'])
+#             instance.save()
+#             return HttpResponseRedirect('/success/url/')
+#     else:
+#         form = NewPostForm()
+#     return render(request, 'newpost.html', {'form': form})
+
 def NewPost(request):
     if request.method == 'POST':
-        data=request.POST
-        images=request.FILES.getlist('pictures')
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = Post(file_field=request.FILES['file'])
-            instance.save()
-            return HttpResponseRedirect('/success/url/')
+            form.save()
+            return redirect('index')
     else:
         form = NewPostForm()
-    return render(request, 'newpost.html', {'form': form})
+    return render(request, 'newpost.html', {
+        'form': form
+    })
