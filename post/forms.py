@@ -7,7 +7,7 @@ class NewPostForm(forms.ModelForm):
     picture=forms.ImageField(required=True)
     caption = forms.CharField(widget=forms.Textarea(attrs={'class': 'input is-medium'}), required=True)
     tags = forms.CharField(widget=forms.TextInput(attrs={'class': 'input is-medium'}), required=True)
-	# content = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=True)
+	
  
  
  
@@ -15,7 +15,7 @@ class NewPostForm(forms.ModelForm):
  
     class Meta:
         model = Post
-        fields = ('content', 'caption', 'tags')
+        fields = ( 'caption', 'tags')
     
 		
 		

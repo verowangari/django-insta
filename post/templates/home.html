@@ -3,43 +3,25 @@
 {% load static %}
 
 {% block content %}
-<div class="columns is-mobile is-centered">
+<h1>Hi Veronica</h1>
+{% for news_item in post_items%}
+    <div class="card">
+        <img src="{{post_item.picture.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"> <span style="color: black; font-weight: bold;">Name~</span>{{news_item.user}}</h5>
+            <p class="card-text"> <span style="color: black; font-weight: bold;">Caption~</span>{{news_item.caption}}</p>
+            <p class="card-text"> <span style="color: black; font-weight: bold;" >Date~</span> {{news_item.posted}}</p>
+            <p class="card-text"> <span style="color: black; font-weight: bold;" >Author~</span> {{news_item.likes}}</p>
+            <div class="content" id="content">
+                
 
-    <div class="column is-half">
-
-        {% for post_item in post_items %}
-
-        <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="{{post_item.picture.url}}" alt="">
-                </figure>
+              </div>
+              
             </div>
-<div class="card-content">
-    <div class="media">
-        <div class="media-left">
-            <figure class="image is-48x48">
-                <img src="" alt="">
-            </figure>
-        </div>
-
-        <div class="media-content">
-            <p class="title is-4">John Doe</p>
-            <p class="subtitle is-6">@{{post_item.user.username.url}}</p>
-        </div>
     </div>
-    <div class="content">
-       
-    {{post_item.caption}}
-    <a href="">#css</a>
-    <br>
-    <time datetime='2016-1-1'> {{post_item.posted}}</time>
-    </div>
-</div>
-
-        </div>
-       
-    </div>
-</div>
+{% empty %}
+<div class="row">
+    <h2 style="color: black; margin-top: 2rem;" class="text-center">There No Gallery Items</h2>
+  </div>
 {% endfor %}
-{% endblock %}
+{% endblock%}
