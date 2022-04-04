@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'clone.apps.CloneConfig',
     'post.apps.PostConfig',
+     'cloudinary'
 ]
 
 MIDDLEWARE = [
