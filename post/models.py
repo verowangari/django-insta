@@ -7,7 +7,7 @@ from django.db.models.signals import post_save, post_delete
 from django.utils.text import slugify
 from django.urls import reverse
 
-from notifications.models import Notification
+# from notifications.models import Notification
 
 
 # Create your models here.
@@ -69,18 +69,18 @@ class Follow(models.Model):
         follow = instance
         sender = follow.follower
         following = follow.following
-        notify = Notification(
-            sender=sender, user=following, notification_type=3)
-        notify.save()
+        # notify = Notification(
+        #     sender=sender, user=following, notification_type=3)
+        # notify.save()
 
     def user_unfollow(sender, instance, *args, **kwargs):
         follow = instance
         sender = follow.follower
         following = follow.following
 
-        notify = Notification.objects.filter(
-            sender=sender, user=following, notification_type=3)
-        notify.delete()
+        # notify = Notification.objects.filter(
+        #     sender=sender, user=following, notification_type=3)
+        # notify.delete()
 
 
 class Stream(models.Model):
@@ -110,18 +110,18 @@ class Likes(models.Model):
         like = instance
         post = like.post
         sender = like.user
-        notify = Notification(post=post, sender=sender,
-                              user=post.user, notification_type=1)
-        notify.save()
+        # notify = Notification(post=post, sender=sender,
+        #                       user=post.user, notification_type=1)
+        # notify.save()
 
     def user_unlike_post(sender, instance, *args, **kwargs):
         like = instance
         post = like.post
         sender = like.user
 
-        notify = Notification.objects.filter(
-            post=post, sender=sender, notification_type=1)
-        notify.delete()
+        # notify = Notification.objects.filter(
+        #     post=post, sender=sender, notification_type=1)
+        # notify.delete()
 
 
 # Stream

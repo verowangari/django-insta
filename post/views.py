@@ -4,16 +4,16 @@ from django.template import loader
 
 from post.models import Stream, Post, Tag, Likes, PostFileContent
 from post.forms import NewPostForm
-from stories.models import Story, StoryStream
+# from stories.models import Story, StoryStream
 
-from comment.models import Comment
-from comment.forms import CommentForm
+# from comment.models import Comment
+# from comment.forms import CommentForm
 
 
 from django.contrib.auth.decorators import login_required
 
 from django.urls import reverse
-from authy.models import Profile
+from clone.models import Profile
 
 
 
@@ -23,7 +23,7 @@ def index(request):
 	user = request.user
 	posts = Stream.objects.filter(user=user)
 
-	stories = StoryStream.objects.filter(user=user)
+	# stories = StoryStream.objects.filter(user=user)
 
 
 	group_ids = []
