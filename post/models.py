@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 from django.db.models.signals import post_save, post_delete
@@ -25,8 +26,8 @@ class Tag(models.Model):
         verbose_name = 'Tag'
         verbose_name_plural = 'Tags'
 
-    def get_absolute_url(self):
-        return reverse('tags', args=[self.slug])
+    # def get_absolute_url(self):
+    #     # return reverse('tags', args=[self.slug])
 
     def __str__(self):
         return self.title
@@ -46,7 +47,7 @@ class PostFileContent(models.Model):
 class Post(models.Model):
     
     id=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
-    picture=models.ImageField(upload_to=user_directory_path,verbose_name='Picture',null=False)
+    picture = CloudinaryField('picture')
     caption = models.TextField(max_length=1500, verbose_name='Caption',default='SOME STRING')
     posted=models.DateTimeField(auto_now_add=True)
     tags=models.ManyToManyField(Tag,related_name='tags')
@@ -56,6 +57,9 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('postdetails', args=[str(self.id)])
+    
+    def delete_picture(self):
+        self.delete()
 
     def __str__(self):
         return str(self.id)

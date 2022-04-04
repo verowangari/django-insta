@@ -3,7 +3,7 @@ from . import views
 from django.contrib.auth import views as authViews 
 from clone.views import Signup
 urlpatterns=[
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
     
     path('signup/', Signup, name='signup'),
     # path('profile/edit', EditProfile, name='edit-profile'),

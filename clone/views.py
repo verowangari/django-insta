@@ -5,9 +5,9 @@ from clone.forms import SignupForm
 from django.contrib.auth.models import User
 
 # Create your views here.
-def index(request):
-  template = loader.get_template('base.html')
-  return HttpResponse(template.render())
+# def index(request):
+#   template = loader.get_template('base.html')
+#   return HttpResponse(template.render())
 
 
 def login(request):

@@ -1,1 +1,38 @@
-html
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="columns is-mobile is-centered">
+
+    <div class="column is-half">
+
+        {% for news_item in post_items%}
+
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="{{news_item.picture.url}}" alt="">
+                </figure>
+            </div>
+<div class="card-content">
+    <div class="media">
+        <div class="media-left">
+            <figure class="image is-48x48">
+                <img src="" alt="">
+            </figure>
+        </div>
+
+        <div class="media-content">
+            <p class="title is-4">John Doe</p>
+            <p class="subtitle is-6">@{{news_item.user}}</p>
+        </div>
+    </div>
+    <div class="content">
+       
+    {{news_item.caption}}
+    <a href="">#css</a>
+    <br>
+    <time datetime='2016-1-1'> {{news_item.posted}}</time>
+    </div>
+</div>
