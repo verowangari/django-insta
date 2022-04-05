@@ -105,7 +105,7 @@ def NewPost(request):
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
             new_post=form.save(commit=False)
-            # new_post.profile=current_user
+            new_post.user=current_user
             new_post.save()
             print('post saved')
             return redirect(index)
