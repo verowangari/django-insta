@@ -100,7 +100,7 @@ def index(request):
         
 @login_required      
 def NewPost(request):
-    user=request.user.id
+    current_user=request.user
     if request.method == 'POST':
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
