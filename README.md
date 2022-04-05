@@ -11,8 +11,7 @@ The user can perform the following functions:
 
 -  A user can Sign in to the application to start using it.
 -  A user can upload pictures to the application.
--  A user can search for different categories of photos. (ie. Travel, Food)
--  see the pitches other people have posted
+-  
 
 ## Installation / Setup instruction
 The application requires the following installations to operate:
