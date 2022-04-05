@@ -34,7 +34,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = '*'
+
 ALLOWED_HOSTS = []
 
 
@@ -115,7 +115,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'clonepost',
         'USER': 'moringa',
-    'PASSWORD':'Access',
+        'PASSWORD':'Access',
     }
 }
 
@@ -183,3 +183,5 @@ cloudinary.config(
   api_key = '934679428694675', 
   api_secret = 'KPYcLgUjm71mz8lOmYb3LlXV7xs' 
 )
+
+django_heroku.settings(locals())
