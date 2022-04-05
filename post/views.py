@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.template import loader
 
 # Create your views here.
-from post.models import Post,Stream,Tag
+from post.models import Post,Stream
 from post.forms import NewPostForm
 from django.http import HttpResponseRedirect,HttpResponse
 
@@ -38,6 +38,7 @@ def index(request):
 
     return HttpResponse(template.render(context,request))
 
+
 # @login_required
 # def NewPost(request):
 #     if request.method == 'POST':
@@ -64,35 +65,50 @@ def index(request):
 #         'form': form
 #     })
 
-@login_required
+# @login_required
+# def NewPost(request):
+#     user=request.user.id
+#     tags_objs=[]
+    
+#     if request.method=='POST':
+#         form=NewPostForm(request.POST,request.FILES)
+#         if form.is_valid():
+#             picture=form.cleaned_data.get('picture')
+#             caption=form.cleaned_data.get('caption')
+#             tags_form=form.cleaned_data.get('tags')
+            
+#             tags_list=list(tags_form.split(','))
+            
+#             for tag in tags_list:
+#                 t,created=Tag.objects.get_or_create(title=tag)
+#                 tags_objs.append(t)
+                
+                
+#             p,created =Post.objects.get_or_create(picture=picture,caption=caption,user_id=user)
+#             p.tags.set(tags_objs)
+#             p.save()
+#             return redirect('index')
+        
+#     else:
+#             form=NewPostForm()
+            
+#             context={
+#                 'form':form,
+#             }
+            
+#     return render(request, 'index.html', context)
+        
+@login_required      
 def NewPost(request):
     user=request.user.id
-    tags_objs=[]
-    
-    if request.method=='POST':
-        form=NewPostForm(request.POST,request.FILES)
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
-            picture=form.cleaned_data.get('picture')
-            caption=form.cleaned_data.get('caption')
-            tags_form=form.cleaned_data.get('tags')
-            
-            tags_list=list(tags_form.split(','))
-            
-            for tag in tags_list:
-                t,created=Tag.objects.get_or_create(title=tag)
-                tags_objs.append(t)
-                
-                
-            p,created =Post.objects.get_or_create(picture=picture,caption=caption,user_id=user)
-            p.tags.set(tags_objs)
-            p.save()
-            return redirect('index')
-        
-        else:
-            form=NewPostForm()
-            
-            context={
-                'form':form,
-            }
-            
-        return render(request,'newpost.html',context)
+            new_post=form.save(commit=False)
+            # new_post.profile=current_user
+            new_post.save()
+            print('post saved')
+            return redirect(index)
+    else:
+        form = NewPostForm()
+    return render(request, 'newpost.html',{'form':form})

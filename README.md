@@ -4,13 +4,13 @@
 [Veronica Muriithi]
 
 ### Description
-A Django application for a personal gallery that allows a user to upload images for other to see 
+A Django application thats works as a clone for instagram
 
 ## Requirements
 The user can perform the following functions:
 
--  A user can click on a single photo to expand it and also view the details of the photo. The photo details appear on a modal within the same route as the main page.
--  A user can view different photos that interest them.
+-  A user can Sign in to the application to start using it.
+-  A user can upload pictures to the application.
 -  A user can search for different categories of photos. (ie. Travel, Food)
 -  see the pitches other people have posted
 
