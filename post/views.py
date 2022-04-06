@@ -39,65 +39,6 @@ def index(request):
     return HttpResponse(template.render(context,request))
 
 
-# @login_required
-# def NewPost(request):
-#     if request.method == 'POST':
-#         data=request.POST
-#         images=request.FILES.getlist('pictures')
-#         form = NewPostForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             instance = Post(file_field=request.FILES['file'])
-#             instance.save()
-#             return HttpResponseRedirect('/success/url/')
-#     else:
-#         form = NewPostForm()
-#     return render(request, 'newpost.html', {'form': form})
-
-# def NewPost(request):
-#     if request.method == 'POST':
-#         form = NewPostForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('index')
-#     else:
-#         form = NewPostForm()
-#     return render(request, 'newpost.html', {
-#         'form': form
-#     })
-
-# @login_required
-# def NewPost(request):
-#     user=request.user.id
-#     tags_objs=[]
-    
-#     if request.method=='POST':
-#         form=NewPostForm(request.POST,request.FILES)
-#         if form.is_valid():
-#             picture=form.cleaned_data.get('picture')
-#             caption=form.cleaned_data.get('caption')
-#             tags_form=form.cleaned_data.get('tags')
-            
-#             tags_list=list(tags_form.split(','))
-            
-#             for tag in tags_list:
-#                 t,created=Tag.objects.get_or_create(title=tag)
-#                 tags_objs.append(t)
-                
-                
-#             p,created =Post.objects.get_or_create(picture=picture,caption=caption,user_id=user)
-#             p.tags.set(tags_objs)
-#             p.save()
-#             return redirect('index')
-        
-#     else:
-#             form=NewPostForm()
-            
-#             context={
-#                 'form':form,
-#             }
-            
-#     return render(request, 'index.html', context)
-        
 @login_required      
 def NewPost(request):
     current_user=request.user
