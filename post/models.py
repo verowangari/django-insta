@@ -112,9 +112,7 @@ class Likes(models.Model):
         like = instance
         post = like.post
         sender = like.user
-        # notify = Notification(post=post, sender=sender,
-        #                       user=post.user, notification_type=1)
-        # notify.save()
+    
 
     def user_unlike_post(sender, instance, *args, **kwargs):
         like = instance
