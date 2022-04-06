@@ -11,6 +11,7 @@ from django.conf.urls.static import static
 urlpatterns = [
    	path('', views.index, name='index'),
    	path('newpost/', views.NewPost, name='newpost'),
+    path('search_users/', views.Search_users, name='search_users'),
    	
 ]
 if settings.DEBUG:

@@ -53,3 +53,7 @@ def NewPost(request):
     else:
         form = NewPostForm()
     return render(request, 'newpost.html',{'form':form})
+
+@login_required
+def Search_users(requests):
+    return render(request,'search_users.html')

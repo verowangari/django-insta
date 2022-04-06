@@ -70,19 +70,20 @@
           <strong>New Story</strong>
         </a>
 
-        <a href="" class="navbar-item">
-          
-          <div class="field has-addons">
-            <div class="control">
-              <input class="input" type="text" placeholder="Find a User">
-            </div>
-            <div class="control">
-              <a class="button is-primary">
-                Search
-              </a>
-            </div>
+
+       
+         <form class="d-flex" method="POST" action="{% url 'search_users'%}">
+          <div class="field has-addons has-addons-centered">
+          {% csrf_token%}
+
+           <div class="control">
+           <input class="input" type="Search" placeholder="Search for a user"> </div>
+           <div class="control">
+           <button class="button is-primary" type="submit">Search</button> </div>
+      
           </div>
-        </a>
+         </form>
+       
         
 
       <div class="navbar-item has-dropdown is-hoverable">
