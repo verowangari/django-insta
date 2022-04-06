@@ -1,5 +1,9 @@
 {% extends 'base.html'%}
 {% load static %}
 {% block content %}
-<center><h1>You Searched for ...</h1></center>
+{% if searched %}
+<center><h1>You Searched for {{searched}}</h1></center>
+{% else %}
+<h1>Hey!You forgot to search for a User...</h1>
+{% endif %}
 {% endblock  %}

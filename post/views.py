@@ -4,6 +4,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.template import loader
 
+
 # Create your views here.
 from post.models import Post,Stream
 from post.forms import NewPostForm
@@ -55,6 +56,21 @@ def NewPost(request):
     return render(request, 'newpost.html',{'form':form})
 
 @login_required
-def Search_users(requests):
+def Search_users(request):
     template = loader.get_template('search_users.html')
-    return HttpResponse(template.render())
+    
+    if request.method =='POST':
+        searched=request.POST['searched']
+        
+        context={
+            'searched':searched,
+        }
+        return HttpResponse(template.render(context,request))
+        
+    else:
+        return HttpResponse(template.render())
+        
+    
+        
+    
+    
