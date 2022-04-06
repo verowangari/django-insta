@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>post your images</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -65,11 +65,25 @@
           <i style="color: green;" class="material-icons">perm_media</i>
           <strong>New Post</strong>
         </a>
-
         <a href="" class="navbar-item">
           <i style="color: green;" class="material-icons">photo_filter</i>
           <strong>New Story</strong>
         </a>
+
+        <a href="" class="navbar-item">
+          
+          <div class="field has-addons">
+            <div class="control">
+              <input class="input" type="text" placeholder="Find a User">
+            </div>
+            <div class="control">
+              <a class="button is-info">
+                Search
+              </a>
+            </div>
+          </div>
+        </a>
+        
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
