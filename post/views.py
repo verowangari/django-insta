@@ -56,4 +56,5 @@ def NewPost(request):
 
 @login_required
 def Search_users(requests):
-    return render(request,'search_users.html')
+    template = loader.get_template('search_users.html')
+    return HttpResponse(template.render())
