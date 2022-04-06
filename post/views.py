@@ -61,9 +61,12 @@ def Search_users(request):
     
     if request.method =='POST':
         searched=request.POST['searched']
+       
+        # searched=Post.objects.filter(user_id__icontains=searched)
         
         context={
             'searched':searched,
+            # 'searcheduser':searched,
         }
         return HttpResponse(template.render(context,request))
         

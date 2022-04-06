@@ -30,11 +30,13 @@
         <div class="media-content">
             <p class="title is-4">John Doe</p>
             <p class="subtitle is-6">@{{post_item.user.username}}</p>
+           
         </div>
     </div>
     <div class="content">
        
     {{post_item.caption}}
+    <p class="subtitle is-6">Likes{{post_items.likes}}</p>
     <p>{% for tag in post_item.tags.all %}<a href="{{tag.get_absolute_url}}">#{{tag}}</a>{% endfor %}</p> 
     
     <br>

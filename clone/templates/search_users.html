@@ -3,7 +3,11 @@
 {% block content %}
 {% if searched %}
 <center><h1>You Searched for {{searched}}</h1></center>
+<br/>
+{% for user in searcheduser %}
+{{user}}
+{% endfor%}
 {% else %}
-<h1>Hey!You forgot to search for a User...</h1>
+<center><h1>Hey!You forgot to search for a User...</strong></center>
 {% endif %}
 {% endblock  %}
