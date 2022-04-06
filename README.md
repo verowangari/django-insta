@@ -6,6 +6,8 @@
 ### Description
 A Django application thats works as a clone for instagram
 
+![Screenreadme](https://user-images.githubusercontent.com/53782607/162088230-40298d9e-2bd2-49f1-a0ad-86cd0f319f0f.png)
+
 ## Requirements
 The user can perform the following functions:
 
