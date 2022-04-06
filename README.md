@@ -4,10 +4,9 @@
 [Veronica Muriithi]
 
 ### Description
-A Django application thats works as a clone for instagram
+A Django application that allows users to upload, like and comment on other peoples images. Images have captions and users have profiles where you can see all their images Images are hosted on Cloudinary.
 
 ![Screenreadme](https://user-images.githubusercontent.com/53782607/162088230-40298d9e-2bd2-49f1-a0ad-86cd0f319f0f.png)
-
 
 
 ![screenpost](https://user-images.githubusercontent.com/53782607/162088656-737740cd-44de-483a-bc7a-e20da8b9739b.png)
@@ -18,12 +17,13 @@ The user can perform the following functions:
 
 -  A user can Sign in to the application to start using it.
 -  A user can upload pictures to the application.
+-  A user can search for other usersnames on the application.
 -  
 
 ## Installation / Setup instruction
 The application requires the following installations to operate:
 - pip
-- flask
+- cloudinary
 - postgresql
 - gunicorn
 - django
@@ -59,7 +59,11 @@ pip install -r requirements.txt
 ```
 py manage.py makemigrations
 ```
-7. Run Application
+7. Migrate DB
+```
+py manage.py migrate
+```
+8. Run Application
 ```
 py manage.py runserver
 ```
