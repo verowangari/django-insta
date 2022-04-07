@@ -54,12 +54,6 @@ class Post(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE, null=True)
     likes = models.IntegerField(default=0)
     
-    
-    # @classmethod
-    # def search_by_user(cls,user):
-    #     searcheduser = cls.objects.filter(user__icontains=user)
-    #     return searcheduser
-    
 
     def get_absolute_url(self):
         return reverse('postdetails', args=[str(self.id)])
